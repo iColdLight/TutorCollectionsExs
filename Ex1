@@ -1,1 +1,32 @@
+package com.Tutor;
 
+import java.util.HashMap;
+
+public class Main {
+
+    public static void main(String[] args) {
+        HashMap<Integer, Integer> hm = new HashMap();
+        hm.put(0, 3);
+        hm.put(1, 8);
+        hm.put(2, 15);
+        hm.put(3, 17);
+
+        Main main = new Main();
+        main.sum2(hm, 23);
+
+
+    }
+    public static boolean sum2(HashMap<Integer, Integer> hashmap, int num) {
+        return sum2(hashmap, num, 0, hashmap.size() - 1);
+    }
+
+    public static boolean sum2 (HashMap<Integer, Integer> hashmap, int n, int first, int second){
+        int sum = hashmap.get(first)+hashmap.get(second);
+        if (sum == n) return true;
+        if (second < first && first == second) return false;
+        if (first < hashmap.size() - 1 && second != first){
+            return sum2(hashmap, n, first, second - 1) || sum2(hashmap, n, first + 1, second);}
+        else return false;
+
+    }
+}
